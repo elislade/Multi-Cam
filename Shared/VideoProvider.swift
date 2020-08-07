@@ -23,7 +23,7 @@ class VideoProvider: NSObject {
     )
     
     func setup() {
-        if AVCaptureDevice.authorizationStatus(for: .video) == .notDetermined {
+        if AVCaptureDevice.authorizationStatus(for: .video) != .authorized {
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { authed in
                 if authed { self.setup() }
             })
