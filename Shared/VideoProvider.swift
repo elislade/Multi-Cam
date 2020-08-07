@@ -24,30 +24,34 @@ class VideoProvider: NSObject {
     
     func setup() {
         if AVCaptureDevice.authorizationStatus(for: .video) == .notDetermined {
-            AVCaptureDevice.requestAccess(for: .video, completionHandler: { auth in
-                self.setup()
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { authed in
+                if authed { self.setup() }
             })
         } else {
+            
+            guard
+                let front = discover.devices.first(where: {$0.position == .front}),
+                let back = discover.devices.first(where: {$0.position == .back})
+            else { return }
+            
             session.startRunning()
-            
-            let front = discover.devices.first(where: {$0.position == .front})!
-            let back = discover.devices.first(where: {$0.position == .back})!
-            
             session.beginConfiguration()
           
             if let input = try? AVCaptureDeviceInput(device: front) {
                 if session.canAddInput(input) {
                     session.addInputWithNoConnections(input)
-                    let port = input.ports(for: .video, sourceDeviceType: front.deviceType, sourceDevicePosition: front.position).first!
-                    session.addConnection(AVCaptureConnection(inputPort: port, videoPreviewLayer: frontLayer))
+                    if let port = input.ports(for: .video, sourceDeviceType: front.deviceType, sourceDevicePosition: front.position).first {
+                        session.addConnection(AVCaptureConnection(inputPort: port, videoPreviewLayer: frontLayer))
+                    }
                 }
             }
             
             if let input = try? AVCaptureDeviceInput(device: back) {
                 if session.canAddInput(input) {
                     session.addInputWithNoConnections(input)
-                    let port = input.ports(for: .video, sourceDeviceType: back.deviceType, sourceDevicePosition: back.position).first!
-                    session.addConnection(AVCaptureConnection(inputPort: port, videoPreviewLayer: backLayer))
+                    if let port = input.ports(for: .video, sourceDeviceType: back.deviceType, sourceDevicePosition: back.position).first {
+                        session.addConnection(AVCaptureConnection(inputPort: port, videoPreviewLayer: backLayer))
+                    }
                 }
             }
             
