@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController interfaceStyle="dark" id="BYZ-38-t0r" customClass="ViewController" customModule="Video_UIKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kWR-vD-3Cd" customClass="PinnedLayerView" customModule="Video_UIKit" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" name="yellow"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psA-4P-RfL" customClass="PinnedLayerView" customModule="Video_UIKit" customModuleProvider="target">
+                                <rect key="frame" x="16" y="666" width="100" height="180"/>
+                                <color key="backgroundColor" name="brown"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="Ai3-Ey-k9d"/>
+                                    <constraint firstAttribute="width" constant="100" id="dUo-ln-1Q0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="psA-4P-RfL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" priority="999" constant="16" id="LA4-mK-dmp"/>
+                            <constraint firstItem="kWR-vD-3Cd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LyA-HT-Vde"/>
+                            <constraint firstAttribute="bottom" secondItem="kWR-vD-3Cd" secondAttribute="bottom" id="Qjq-MN-H6i"/>
+                            <constraint firstItem="psA-4P-RfL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="SjX-3p-WXc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="psA-4P-RfL" secondAttribute="trailing" priority="999" constant="16" id="eQn-qv-ITU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="psA-4P-RfL" secondAttribute="bottom" constant="16" id="k3T-2T-e73"/>
+                            <constraint firstAttribute="trailing" secondItem="kWR-vD-3Cd" secondAttribute="trailing" id="myP-0c-Acl"/>
+                            <constraint firstItem="kWR-vD-3Cd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uXH-8c-USj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundVideoView" destination="kWR-vD-3Cd" id="m9q-vV-aBt"/>
+                        <outlet property="pipBottom" destination="k3T-2T-e73" id="Tfq-ns-dq2"/>
+                        <outlet property="pipLeading" destination="SjX-3p-WXc" id="Cwl-tS-GxG"/>
+                        <outlet property="pipTop" destination="LA4-mK-dmp" id="954-pA-Uex"/>
+                        <outlet property="pipTrailing" destination="eQn-qv-ITU" id="aS8-3H-USN"/>
+                        <outlet property="pipVideoView" destination="psA-4P-RfL" id="jms-45-4nu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="brown">
+            <color red="0.66666666666666663" green="0.47058823529411764" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="yellow">
+            <color red="1" green="0.82243543863296509" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
