@@ -11,34 +11,39 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController interfaceStyle="dark" id="BYZ-38-t0r" customClass="ViewController" customModule="Video_UIKit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController interfaceStyle="light" id="BYZ-38-t0r" customClass="ViewController" customModule="UIKit_Video" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kWR-vD-3Cd" customClass="PinnedLayerView" customModule="Video_UIKit" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="ecp-HQ-Yqp">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" name="yellow"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kWR-vD-3Cd" customClass="PinnedLayerView" customModule="UIKit_Video" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psA-4P-RfL" customClass="PinnedLayerView" customModule="Video_UIKit" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psA-4P-RfL" customClass="PinnedLayerView" customModule="UIKit_Video" customModuleProvider="target">
                                 <rect key="frame" x="16" y="666" width="100" height="180"/>
-                                <color key="backgroundColor" name="brown"/>
+                                <color key="backgroundColor" name="pipFill"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="Ai3-Ey-k9d"/>
                                     <constraint firstAttribute="width" constant="100" id="dUo-ln-1Q0"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="psA-4P-RfL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" priority="999" constant="16" id="LA4-mK-dmp"/>
                             <constraint firstItem="kWR-vD-3Cd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LyA-HT-Vde"/>
                             <constraint firstAttribute="bottom" secondItem="kWR-vD-3Cd" secondAttribute="bottom" id="Qjq-MN-H6i"/>
+                            <constraint firstItem="ecp-HQ-Yqp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="SIE-9V-RrW"/>
                             <constraint firstItem="psA-4P-RfL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="SjX-3p-WXc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="psA-4P-RfL" secondAttribute="trailing" priority="999" constant="16" id="eQn-qv-ITU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="psA-4P-RfL" secondAttribute="bottom" constant="16" id="k3T-2T-e73"/>
                             <constraint firstAttribute="trailing" secondItem="kWR-vD-3Cd" secondAttribute="trailing" id="myP-0c-Acl"/>
+                            <constraint firstAttribute="trailing" secondItem="ecp-HQ-Yqp" secondAttribute="trailing" id="obY-bb-9t4"/>
+                            <constraint firstAttribute="bottom" secondItem="ecp-HQ-Yqp" secondAttribute="bottom" id="rql-LG-yOC"/>
                             <constraint firstItem="kWR-vD-3Cd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uXH-8c-USj"/>
+                            <constraint firstItem="ecp-HQ-Yqp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wwA-SP-hAC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -57,11 +62,9 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="brown">
-            <color red="0.66666666666666663" green="0.47058823529411764" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="yellow">
-            <color red="1" green="0.82243543863296509" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="bg" width="100" height="100"/>
+        <namedColor name="pipFill">
+            <color red="0.058823529411764705" green="0.058823529411764705" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

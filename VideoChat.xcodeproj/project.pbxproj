@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C4231F624DE6F9D00473946 /* TrafficLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4231F524DE6F9D00473946 /* TrafficLights.swift */; };
+		1C57B68A24DE237100C385C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57B68924DE237100C385C0 /* AppDelegate.swift */; };
+		1C57B68E24DE237200C385C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C57B68D24DE237200C385C0 /* Assets.xcassets */; };
+		1C57B69124DE237200C385C0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C57B69024DE237200C385C0 /* Preview Assets.xcassets */; };
+		1C57B69424DE237200C385C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C57B69224DE237200C385C0 /* Main.storyboard */; };
+		1C57B69D24DE276800C385C0 /* AlignmentExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDCC8BE24DDE31D00FA55B2 /* AlignmentExtension.swift */; };
+		1C57B69F24DE27A000C385C0 /* CALayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57B69E24DE27A000C385C0 /* CALayerView.swift */; };
+		1C57B6A024DE294700C385C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CAAF14924DD087E000E138E /* Assets.xcassets */; };
+		1C57B6A224DE2ED900C385C0 /* VideoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57B6A124DE2ED900C385C0 /* VideoProvider.swift */; };
+		1C57B6A424DE2F9000C385C0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57B6A324DE2F9000C385C0 /* ContentView.swift */; };
+		1C57B6A624DE375400C385C0 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57B6A524DE375400C385C0 /* Window.swift */; };
+		1C57B6A824DE462600C385C0 /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57B6A724DE462600C385C0 /* TitleBar.swift */; };
 		1CAAF14424DD087C000E138E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAAF14324DD087C000E138E /* AppDelegate.swift */; };
 		1CAAF14624DD087C000E138E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAAF14524DD087C000E138E /* SceneDelegate.swift */; };
 		1CAAF14824DD087C000E138E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAAF14724DD087C000E138E /* ContentView.swift */; };
@@ -29,6 +41,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C4231F524DE6F9D00473946 /* TrafficLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLights.swift; sourceTree = "<group>"; };
+		1C57B68724DE237100C385C0 /* SwiftUI Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C57B68924DE237100C385C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1C57B68D24DE237200C385C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1C57B69024DE237200C385C0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1C57B69324DE237200C385C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1C57B69524DE237200C385C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C57B69624DE237200C385C0 /* SwiftUI_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftUI_Mac.entitlements; sourceTree = "<group>"; };
+		1C57B69E24DE27A000C385C0 /* CALayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerView.swift; sourceTree = "<group>"; };
+		1C57B6A124DE2ED900C385C0 /* VideoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoProvider.swift; sourceTree = "<group>"; };
+		1C57B6A324DE2F9000C385C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1C57B6A524DE375400C385C0 /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		1C57B6A724DE462600C385C0 /* TitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBar.swift; sourceTree = "<group>"; };
 		1CAAF14024DD087C000E138E /* SwiftUI Video.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI Video.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CAAF14324DD087C000E138E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CAAF14524DD087C000E138E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +74,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1C57B68424DE237100C385C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1CAAF13D24DD087C000E138E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -66,12 +98,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C57B68824DE237100C385C0 /* SwiftUI Mac */ = {
+			isa = PBXGroup;
+			children = (
+				1C57B68924DE237100C385C0 /* AppDelegate.swift */,
+				1C57B6A124DE2ED900C385C0 /* VideoProvider.swift */,
+				1C57B6A524DE375400C385C0 /* Window.swift */,
+				1C4231F524DE6F9D00473946 /* TrafficLights.swift */,
+				1C57B69E24DE27A000C385C0 /* CALayerView.swift */,
+				1C57B6A724DE462600C385C0 /* TitleBar.swift */,
+				1C57B6A324DE2F9000C385C0 /* ContentView.swift */,
+				1C57B68D24DE237200C385C0 /* Assets.xcassets */,
+				1C57B69224DE237200C385C0 /* Main.storyboard */,
+				1C57B69524DE237200C385C0 /* Info.plist */,
+				1C57B69624DE237200C385C0 /* SwiftUI_Mac.entitlements */,
+				1C57B68F24DE237200C385C0 /* Preview Content */,
+			);
+			path = "SwiftUI Mac";
+			sourceTree = "<group>";
+		};
+		1C57B68F24DE237200C385C0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				1C57B69024DE237200C385C0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		1CAAF13724DD087C000E138E = {
 			isa = PBXGroup;
 			children = (
 				1CDCC8AB24DDC7EE00FA55B2 /* Shared */,
 				1CAAF14224DD087C000E138E /* SwiftUI */,
 				1CDCC89824DDC7BC00FA55B2 /* UIKit */,
+				1C57B68824DE237100C385C0 /* SwiftUI Mac */,
 				1CAAF14124DD087C000E138E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,6 +141,7 @@
 			children = (
 				1CAAF14024DD087C000E138E /* SwiftUI Video.app */,
 				1CDCC89724DDC7BC00FA55B2 /* UIKit Video.app */,
+				1C57B68724DE237100C385C0 /* SwiftUI Mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,6 +193,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1C57B68624DE237100C385C0 /* SwiftUI Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C57B69924DE237200C385C0 /* Build configuration list for PBXNativeTarget "SwiftUI Mac" */;
+			buildPhases = (
+				1C57B68324DE237100C385C0 /* Sources */,
+				1C57B68424DE237100C385C0 /* Frameworks */,
+				1C57B68524DE237100C385C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwiftUI Mac";
+			productName = "SwiftUI Mac";
+			productReference = 1C57B68724DE237100C385C0 /* SwiftUI Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
 		1CAAF13F24DD087C000E138E /* SwiftUIVideo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1CAAF15424DD087E000E138E /* Build configuration list for PBXNativeTarget "SwiftUIVideo" */;
@@ -176,6 +254,9 @@
 				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "Eli Slade";
 				TargetAttributes = {
+					1C57B68624DE237100C385C0 = {
+						CreatedOnToolsVersion = 11.6;
+					};
 					1CAAF13F24DD087C000E138E = {
 						CreatedOnToolsVersion = 11.6;
 					};
@@ -199,11 +280,23 @@
 			targets = (
 				1CAAF13F24DD087C000E138E /* SwiftUIVideo */,
 				1CDCC89624DDC7BC00FA55B2 /* UIKitVideo */,
+				1C57B68624DE237100C385C0 /* SwiftUI Mac */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1C57B68524DE237100C385C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C57B69424DE237200C385C0 /* Main.storyboard in Resources */,
+				1C57B69124DE237200C385C0 /* Preview Assets.xcassets in Resources */,
+				1C57B6A024DE294700C385C0 /* Assets.xcassets in Resources */,
+				1C57B68E24DE237200C385C0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1CAAF13E24DD087C000E138E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -227,6 +320,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1C57B68324DE237100C385C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C4231F624DE6F9D00473946 /* TrafficLights.swift in Sources */,
+				1C57B6A224DE2ED900C385C0 /* VideoProvider.swift in Sources */,
+				1C57B69F24DE27A000C385C0 /* CALayerView.swift in Sources */,
+				1C57B6A824DE462600C385C0 /* TitleBar.swift in Sources */,
+				1C57B6A424DE2F9000C385C0 /* ContentView.swift in Sources */,
+				1C57B68A24DE237100C385C0 /* AppDelegate.swift in Sources */,
+				1C57B69D24DE276800C385C0 /* AlignmentExtension.swift in Sources */,
+				1C57B6A624DE375400C385C0 /* Window.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1CAAF13C24DD087C000E138E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -257,6 +365,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1C57B69224DE237200C385C0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1C57B69324DE237200C385C0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		1CAAF14E24DD087E000E138E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -276,6 +392,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1C57B69724DE237200C385C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SwiftUI Mac/SwiftUI_Mac.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftUI Mac/Preview Content\"";
+				DEVELOPMENT_TEAM = N2V9KYH4KN;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "SwiftUI Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.elislade.SwiftUIVideo-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1C57B69824DE237200C385C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SwiftUI Mac/SwiftUI_Mac.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftUI Mac/Preview Content\"";
+				DEVELOPMENT_TEAM = N2V9KYH4KN;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "SwiftUI Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.elislade.SwiftUIVideo-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		1CAAF15224DD087E000E138E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -473,6 +637,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1C57B69924DE237200C385C0 /* Build configuration list for PBXNativeTarget "SwiftUI Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C57B69724DE237200C385C0 /* Debug */,
+				1C57B69824DE237200C385C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1CAAF13B24DD087C000E138E /* Build configuration list for PBXProject "VideoChat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

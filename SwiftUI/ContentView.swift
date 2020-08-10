@@ -20,7 +20,7 @@ struct ContentView: View {
     var frontVid: some View {
         CALayerView(layer: provider.frontLayer)
             .frame(width: 100, height: 180)
-            .background(Color(.myBrown))
+            .background(Color(.pipFill))
             .cornerRadius(10)
             .offset(pipDragOffset)
             .gesture(dragPip)
@@ -32,7 +32,7 @@ struct ContentView: View {
             HStack { Spacer() }
         }
         .background(CALayerView(layer: provider.backLayer).edgesIgnoringSafeArea(.all))
-        .background(Color(.myYellow).edgesIgnoringSafeArea(.all))
+        .background(Image("bg").resizable().edgesIgnoringSafeArea(.all))
         .overlay(frontVid.padding(), alignment: pipAlignment)
         .onAppear(perform: provider.setup)
     }
@@ -40,5 +40,5 @@ struct ContentView: View {
 
 extension UIColor {
     static let myYellow = UIColor(named: "yellow")!
-    static let myBrown = UIColor(named: "brown")!
+    static let pipFill = UIColor(named: "pipFill")!
 }

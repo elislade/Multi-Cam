@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1CDCC89624DDC7BC00FA55B2"
-               BuildableName = "Video UIKit.app"
+               BuildableName = "UIKit Video.app"
                BlueprintName = "UIKitVideo"
                ReferencedContainer = "container:VideoChat.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1CDCC89624DDC7BC00FA55B2"
-            BuildableName = "Video UIKit.app"
+            BuildableName = "UIKit Video.app"
             BlueprintName = "UIKitVideo"
             ReferencedContainer = "container:VideoChat.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1CDCC89624DDC7BC00FA55B2"
-            BuildableName = "Video UIKit.app"
+            BuildableName = "UIKit Video.app"
             BlueprintName = "UIKitVideo"
             ReferencedContainer = "container:VideoChat.xcodeproj">
          </BuildableReference>

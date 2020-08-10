@@ -28,10 +28,8 @@ class VideoProvider: NSObject {
                 if authed { self.setup() }
             })
         } else {
-            
             guard
-                let front = discover.devices.first(where: {$0.position == .front}),
-                let back = discover.devices.first(where: {$0.position == .back})
+                let front = discover.devices.first(where: { $0.position == .front })
             else { return }
             
             session.startRunning()
@@ -46,11 +44,13 @@ class VideoProvider: NSObject {
                 }
             }
             
-            if let input = try? AVCaptureDeviceInput(device: back) {
-                if session.canAddInput(input) {
-                    session.addInputWithNoConnections(input)
-                    if let port = input.ports(for: .video, sourceDeviceType: back.deviceType, sourceDevicePosition: back.position).first {
-                        session.addConnection(AVCaptureConnection(inputPort: port, videoPreviewLayer: backLayer))
+            if let back = discover.devices.first(where: {$0.position == .back}) {
+                if let input = try? AVCaptureDeviceInput(device: back) {
+                    if session.canAddInput(input) {
+                        session.addInputWithNoConnections(input)
+                        if let port = input.ports(for: .video, sourceDeviceType: back.deviceType, sourceDevicePosition: back.position).first {
+                            session.addConnection(AVCaptureConnection(inputPort: port, videoPreviewLayer: backLayer))
+                        }
                     }
                 }
             }
