@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1CAAF13F24DD087C000E138E"
                BuildableName = "SwiftUI Video.app"
-               BlueprintName = "SwiftUIVideo"
-               ReferencedContainer = "container:VideoChat.xcodeproj">
+               BlueprintName = "Video-SwiftUI"
+               ReferencedContainer = "container:Multi-Cam.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,8 +46,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1CAAF13F24DD087C000E138E"
             BuildableName = "SwiftUI Video.app"
-            BlueprintName = "SwiftUIVideo"
-            ReferencedContainer = "container:VideoChat.xcodeproj">
+            BlueprintName = "Video-SwiftUI"
+            ReferencedContainer = "container:Multi-Cam.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1CAAF13F24DD087C000E138E"
             BuildableName = "SwiftUI Video.app"
-            BlueprintName = "SwiftUIVideo"
-            ReferencedContainer = "container:VideoChat.xcodeproj">
+            BlueprintName = "Video-SwiftUI"
+            ReferencedContainer = "container:Multi-Cam.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -3,7 +3,7 @@ import SwiftUI
 
 class ViewController: UIViewController {
     
-    let provider = VideoProvider()
+    private let provider = VideoProvider()
     
     @IBOutlet weak var backgroundVideoView: PinnedLayerView!
     @IBOutlet weak var pipVideoView: PinnedLayerView!
@@ -15,57 +15,73 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        provider.setup()
-        backgroundVideoView.set(pinnedLayer: provider.backLayer)
-        pipVideoView.set(pinnedLayer: provider.frontLayer)
+        
+        Task {
+            do {
+                try await provider.setup()
+                
+                backgroundVideoView.set(pinnedLayer: provider.backLayer)
+                pipVideoView.set(pinnedLayer: provider.frontLayer)
+            } catch {
+                print("Provider", error)
+            }
+        }
+        
         pipVideoView.layer.cornerRadius = 10
         pipVideoView.clipsToBounds = true
-        pipVideoView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(dragPip)))
+        pipVideoView.addGestureRecognizer(UIPanGestureRecognizer(
+            target: self,
+            action: #selector(dragPip)
+        ))
     }
     
-    @objc func dragPip(r:UIPanGestureRecognizer){
-        if r.state == .changed {
-            let t =  r.translation(in: view)
-            pipVideoView.transform = CGAffineTransform(translationX: t.x, y: t.y)
-        } else if r.state == .ended {
-            let alignment = Alignment.nearest(to: r.predictedEndLocation(in: view), in: view.bounds)
-            changeConstraints(from: alignment)
+    @objc private func dragPip(recognizer: UIPanGestureRecognizer) {
+        if recognizer.state == .changed {
+            let translation = recognizer.translation(in: view)
+            pipVideoView.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
+        } else if recognizer.state == .ended {
             
-            let params = UISpringTimingParameters(mass: 1.0, stiffness: 100.0, damping: 100.0, initialVelocity: CGVector(dx: 0.8, dy: 0.8))
-            let animator = UIViewPropertyAnimator(duration: 0, timingParameters: params)
+            let newAlignment = Alignment.nearest(
+                to: recognizer.predictedEndLocation(in: view),
+                in: view.bounds
+            )
+            
+            updatePipConstraints(to: newAlignment)
+            
+            let animator = UIViewPropertyAnimator(
+                duration: 0,
+                timingParameters: UISpringTimingParameters(
+                    mass: 1,
+                    stiffness: 100,
+                    damping: 100,
+                    initialVelocity: CGVector(dx: 0.8, dy: 0.8)
+                )
+            )
             
             animator.addAnimations {
                 self.view.layoutIfNeeded()
                 self.pipVideoView.transform = .identity
             }
+            
             animator.startAnimation()
         }
     }
     
-    func changeConstraints(from alignment:Alignment){
-        if alignment.vertical == .top {
-            pipBottom.priority = .defaultLow
-            pipTop.priority = .defaultHigh
-        }
-        if alignment.vertical == .bottom {
-            pipBottom.priority = .defaultHigh
-            pipTop.priority = .defaultLow
-        }
-        if alignment.horizontal == .leading {
-            pipLeading.priority = .defaultHigh
-            pipTrailing.priority = .defaultLow
-        }
-        if alignment.horizontal == .trailing {
-            pipLeading.priority = .defaultLow
-            pipTrailing.priority = .defaultHigh
-        }
+    private func updatePipConstraints(to alignment: Alignment) {
+        //Vertical Axis
+        pipBottom.priority = alignment.vertical == .top ? .defaultLow : .defaultHigh
+        pipTop.priority = alignment.vertical == .top ? .defaultHigh : .defaultLow
+        
+        //Horizontal Axis
+        pipLeading.priority = alignment.horizontal == .leading ? .defaultHigh : .defaultLow
+        pipTrailing.priority = alignment.horizontal == .leading ? .defaultLow : .defaultHigh
     }
 
 }
 
 extension UIPanGestureRecognizer {
     
-    func predictedEndLocation(in view:UIView?) -> CGPoint {
+    func predictedEndLocation(in view: UIView?) -> CGPoint {
         func project(from initialVelocity: CGFloat, with decelerationRate: CGFloat) -> CGFloat {
             (initialVelocity / 1000) * decelerationRate / (1 - decelerationRate)
         }

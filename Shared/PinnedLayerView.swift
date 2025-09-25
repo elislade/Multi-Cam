@@ -1,6 +1,7 @@
 import UIKit
 
 class PinnedLayerView: UIView {
+    
     private var pinLayer = CALayer()
     
     func set(pinnedLayer:CALayer) {
@@ -13,6 +14,7 @@ class PinnedLayerView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        CATransaction.begin()
         CATransaction.setAnimationDuration(0)
         pinLayer.frame = bounds
         CATransaction.commit()
