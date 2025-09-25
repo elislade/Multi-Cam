@@ -16,23 +16,73 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Task {
-            do {
-                try await provider.setup()
-                
-                backgroundVideoView.set(pinnedLayer: provider.backLayer)
-                pipVideoView.set(pinnedLayer: provider.frontLayer)
-            } catch {
-                print("Provider", error)
-            }
-        }
-        
-        pipVideoView.layer.cornerRadius = 10
+        pipVideoView.layer.cornerRadius = 16
         pipVideoView.clipsToBounds = true
         pipVideoView.addGestureRecognizer(UIPanGestureRecognizer(
             target: self,
             action: #selector(dragPip)
         ))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updatePipVisibility(isVisible: false, animated: animated)
+        updateBGVisibility(isVisible: false, animated: animated)
+    }
+    
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        
+        Task {
+            do {
+                try await provider.setup()
+                backgroundVideoView.set(pinnedLayer: provider.backLayer)
+                pipVideoView.set(pinnedLayer: provider.frontLayer)
+                updatePipVisibility(isVisible: true, animated: true)
+                updateBGVisibility(isVisible: true, animated: true)
+            } catch {
+                print("Provider", error)
+            }
+        }
+    }
+    
+    private func updateBGVisibility(isVisible: Bool, animated: Bool) {
+        if animated {
+            let animator = UIViewPropertyAnimator(
+                duration: 0.6,
+                timingParameters: UICubicTimingParameters(animationCurve: .easeOut)
+            )
+            
+            animator.addAnimations {
+                self.backgroundVideoView.alpha = isVisible ? 1 : 0
+            }
+            
+            animator.startAnimation()
+        } else {
+            self.backgroundVideoView.alpha = isVisible ? 1 : 0
+        }
+    }
+    
+    private func updatePipVisibility(isVisible: Bool, animated: Bool) {
+        if animated {
+            let animator = UIViewPropertyAnimator(
+                duration: 0,
+                timingParameters: UISpringTimingParameters(
+                    mass: 1,
+                    stiffness: 50,
+                    damping: 8,
+                    initialVelocity: CGVector(dx: 2, dy: 2)
+                )
+            )
+            
+            animator.addAnimations {
+                self.pipVideoView.transform = isVisible ? .identity : CGAffineTransform(scaleX: 0, y: 0)
+            }
+            
+            animator.startAnimation()
+        } else {
+            self.pipVideoView.transform = isVisible ? .identity : CGAffineTransform(scaleX: 0, y: 0)
+        }
     }
     
     @objc private func dragPip(recognizer: UIPanGestureRecognizer) {

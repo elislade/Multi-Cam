@@ -22,6 +22,21 @@ final class VideoProvider: NSObject {
         position: .unspecified
     )
     
+    private func attach(device: AVCaptureDevice, to layer: AVCaptureVideoPreviewLayer) throws {
+        let input = try AVCaptureDeviceInput(device: device)
+        guard session.canAddInput(input) else { return }
+        
+        session.addInputWithNoConnections(input)
+        
+        if let port = input.ports(
+            for: .video,
+            sourceDeviceType: device.deviceType,
+            sourceDevicePosition: device.position
+        ).first {
+            session.addConnection(AVCaptureConnection(inputPort: port, videoPreviewLayer: layer))
+        }
+    }
+    
     func setup() async throws {
         if AVCaptureDevice.authorizationStatus(for: .video) != .authorized {
             let didAuthorize = await AVCaptureDevice.requestAccess(for: .video)
@@ -41,33 +56,8 @@ final class VideoProvider: NSObject {
         
         session.beginConfiguration()
       
-        if let input = try? AVCaptureDeviceInput(device: front) {
-            if session.canAddInput(input) {
-                session.addInputWithNoConnections(input)
-                
-                if let port = input.ports(
-                    for: .video,
-                    sourceDeviceType: front.deviceType,
-                    sourceDevicePosition: front.position
-                ).first {
-                    session.addConnection(AVCaptureConnection(inputPort: port, videoPreviewLayer: frontLayer))
-                }
-            }
-        }
-        
-        if let input = try? AVCaptureDeviceInput(device: back) {
-            if session.canAddInput(input) {
-                session.addInputWithNoConnections(input)
-                
-                if let port = input.ports(
-                    for: .video,
-                    sourceDeviceType: back.deviceType,
-                    sourceDevicePosition: back.position
-                ).first {
-                    session.addConnection(AVCaptureConnection(inputPort: port, videoPreviewLayer: backLayer))
-                }
-            }
-        }
+        try attach(device: front, to: frontLayer)
+        try attach(device: back, to: backLayer)
 
         session.commitConfiguration()
         session.startRunning()
