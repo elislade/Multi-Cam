@@ -1,14 +1,18 @@
 import UIKit
 
-class PinnedLayerView: UIView {
+
+final class PinnedLayerView: UIView {
     
     private var pinLayer = CALayer()
     
-    func set(pinnedLayer:CALayer) {
+    func set(pinnedLayer: CALayer) {
         DispatchQueue.main.async {
-            self.pinLayer.removeFromSuperlayer()
+            CATransaction.begin()
+            CATransaction.setAnimationDuration(0)
+            self.layer.sublayers?.removeAll()
             self.pinLayer = pinnedLayer
             self.layer.addSublayer(pinnedLayer)
+            CATransaction.commit()
         }
     }
 
@@ -19,4 +23,5 @@ class PinnedLayerView: UIView {
         pinLayer.frame = bounds
         CATransaction.commit()
     }
+    
 }

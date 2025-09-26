@@ -1,27 +1,67 @@
 import UIKit
-import SwiftUI
+
 
 class ViewController: UIViewController {
     
     private let provider = VideoProvider()
     
-    @IBOutlet weak var backgroundVideoView: PinnedLayerView!
-    @IBOutlet weak var pipVideoView: PinnedLayerView!
+    private lazy var backgroundView: UIImageView = {
+        let image = UIImage(named: "bg")
+        let view = UIImageView(image: image)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleToFill
+        view.backgroundColor = .black
+        return view
+    }()
     
-    @IBOutlet weak var pipLeading: NSLayoutConstraint!
-    @IBOutlet weak var pipTrailing: NSLayoutConstraint!
-    @IBOutlet weak var pipTop: NSLayoutConstraint!
-    @IBOutlet weak var pipBottom: NSLayoutConstraint!
+    private lazy var fullVideoView: PinnedLayerView = {
+        let view = PinnedLayerView()
+        view.backgroundColor = .clear
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        pipVideoView.layer.cornerRadius = 16
-        pipVideoView.clipsToBounds = true
-        pipVideoView.addGestureRecognizer(UIPanGestureRecognizer(
+    private var pipIsFront = true
+    
+    private lazy var pipView: PinnedLayerView = {
+        let view = PinnedLayerView()
+        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 180).isActive = true
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 16
+        view.addGestureRecognizer(UIPanGestureRecognizer(
             target: self,
             action: #selector(dragPip)
         ))
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(
+            target: self,
+            action: #selector(swapPip)
+        ))
+        
+        return view
+    }()
+    
+    private var pipEdgeConstraints: EdgeConstraints!
+    
+    override func loadView() {
+        let content = UIView()
+        content.addSubview(backgroundView)
+        content.addSubview(fullVideoView)
+        content.addSubview(pipView)
+        view = content
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
+        pipEdgeConstraints = pipView.pin(to: view.safeAreaLayoutGuide, padding: 16)
+        pipEdgeConstraints.configure(for: .bottomLeading)
+        pipEdgeConstraints.activate()
+        
+        backgroundView.pin(to: view).activate()
+        fullVideoView.pin(to: view).activate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,16 +72,22 @@ class ViewController: UIViewController {
     
     override func viewIsAppearing(_ animated: Bool) {
         super.viewIsAppearing(animated)
-        
+ 
         Task {
             do {
                 try await provider.setup()
-                backgroundVideoView.set(pinnedLayer: provider.backLayer)
-                pipVideoView.set(pinnedLayer: provider.frontLayer)
+                fullVideoView.set(pinnedLayer: provider.backLayer)
+                pipView.set(pinnedLayer: provider.frontLayer)
                 updatePipVisibility(isVisible: true, animated: true)
                 updateBGVisibility(isVisible: true, animated: true)
             } catch {
-                print("Provider", error)
+                let alert = UIAlertController(
+                    title: "Error",
+                    message: "\(error)",
+                    preferredStyle: .alert
+                )
+                alert.addAction(.init(title: "Okay", style: .default))
+                present(alert, animated: true)
             }
         }
     }
@@ -54,12 +100,12 @@ class ViewController: UIViewController {
             )
             
             animator.addAnimations {
-                self.backgroundVideoView.alpha = isVisible ? 1 : 0
+                self.fullVideoView.alpha = isVisible ? 1 : 0
             }
             
             animator.startAnimation()
         } else {
-            self.backgroundVideoView.alpha = isVisible ? 1 : 0
+            self.fullVideoView.alpha = isVisible ? 1 : 0
         }
     }
     
@@ -76,27 +122,27 @@ class ViewController: UIViewController {
             )
             
             animator.addAnimations {
-                self.pipVideoView.transform = isVisible ? .identity : CGAffineTransform(scaleX: 0, y: 0)
+                self.pipView.transform = isVisible ? .identity : CGAffineTransform(scaleX: 0, y: 0)
             }
             
             animator.startAnimation()
         } else {
-            self.pipVideoView.transform = isVisible ? .identity : CGAffineTransform(scaleX: 0, y: 0)
+            self.pipView.transform = isVisible ? .identity : CGAffineTransform(scaleX: 0, y: 0)
         }
     }
     
     @objc private func dragPip(recognizer: UIPanGestureRecognizer) {
         if recognizer.state == .changed {
             let translation = recognizer.translation(in: view)
-            pipVideoView.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
+            pipView.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
         } else if recognizer.state == .ended {
             
-            let newAlignment = Alignment.nearest(
+            let newAlignment = Corner.nearest(
                 to: recognizer.predictedEndLocation(in: view),
                 in: view.bounds
             )
             
-            updatePipConstraints(to: newAlignment)
+            pipEdgeConstraints.configure(for: newAlignment)
             
             let animator = UIViewPropertyAnimator(
                 duration: 0,
@@ -110,23 +156,19 @@ class ViewController: UIViewController {
             
             animator.addAnimations {
                 self.view.layoutIfNeeded()
-                self.pipVideoView.transform = .identity
+                self.pipView.transform = .identity
             }
             
             animator.startAnimation()
         }
     }
-    
-    private func updatePipConstraints(to alignment: Alignment) {
-        //Vertical Axis
-        pipBottom.priority = alignment.vertical == .top ? .defaultLow : .defaultHigh
-        pipTop.priority = alignment.vertical == .top ? .defaultHigh : .defaultLow
-        
-        //Horizontal Axis
-        pipLeading.priority = alignment.horizontal == .leading ? .defaultHigh : .defaultLow
-        pipTrailing.priority = alignment.horizontal == .leading ? .defaultLow : .defaultHigh
-    }
 
+    @objc private func swapPip() {
+        fullVideoView.set(pinnedLayer: pipIsFront ? provider.frontLayer : provider.backLayer)
+        pipView.set(pinnedLayer: pipIsFront ? provider.backLayer : provider.frontLayer)
+        pipIsFront.toggle()
+    }
+    
 }
 
 extension UIPanGestureRecognizer {
@@ -146,4 +188,10 @@ extension UIPanGestureRecognizer {
         )
     }
     
+}
+
+
+@available(iOS 17.0, *)
+#Preview{
+    ViewController(nibName: nil, bundle: nil)
 }

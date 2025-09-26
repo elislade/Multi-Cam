@@ -63,7 +63,7 @@ final class VideoProvider: NSObject {
         session.startRunning()
     }
     
-    enum Error: Swift.Error {
+    enum Error: LocalizedError {
         case failedToAuthorizeSessionForVideo
         case missingFrontVideo
         case missingBackVideo

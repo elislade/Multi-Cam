@@ -2,7 +2,7 @@ import SwiftUI
 
 struct CALayerView: UIViewRepresentable {
     
-    let layer:CALayer
+    let layer: CALayer
     
     func makeUIView(context: Context) -> PinnedLayerView {
         let v = PinnedLayerView()
@@ -10,5 +10,8 @@ struct CALayerView: UIViewRepresentable {
         return v
     }
     
-    func updateUIView(_ uiView: PinnedLayerView, context: Context) {}
+    func updateUIView(_ uiView: PinnedLayerView, context: Context) {
+        uiView.set(pinnedLayer: layer)
+    }
+    
 }

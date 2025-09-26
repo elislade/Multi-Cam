@@ -122,8 +122,9 @@
 		1CAAF13824DD087C000E138E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 2600;
 				ORGANIZATIONNAME = "Eli Slade";
 				TargetAttributes = {
 					1CAAF13F24DD087C000E138E = {
